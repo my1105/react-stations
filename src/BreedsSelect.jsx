@@ -1,7 +1,19 @@
-// @ts-check
+export function BreedsSelect({ breeds, selectedBreed, setSelectedBreed }) {
+  const handleChange = (e) => {
+    setSelectedBreed(e.target.value);
+  };
 
-export const BreedsSelect = () => {
-  return <></>
+  return (
+    <div>
+      <h3>犬種を選択してください</h3>
+      <select value={selectedBreed} onChange={handleChange}>
+        <option value="">-- 選択してください --</option>
+        {breeds.map((breed) => (
+          <option key={breed} value={breed}>
+            {breed}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
 }
-
-export default BreedsSelect
