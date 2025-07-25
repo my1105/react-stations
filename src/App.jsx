@@ -1,3 +1,5 @@
+import './App.css';
+
 import { useEffect, useState } from "react";
 
 export function App() {
@@ -20,7 +22,7 @@ export function App() {
 
   return (
     <div>
-      <header>
+      <header className="header">
         <h1>犬の画像を表示するサイトです</h1>
       </header>
       <img src={dogUrl} alt="ランダムな犬" />
