@@ -12,7 +12,10 @@ export function App() {
 
   const handleUpdateClick = () => {
     console.log("ボタンがクリックされました！");
-    setDogUrl("https://images.dog.ceo/breeds/hound-english/n02089973_1132.jpg");
+    fetch("https://dog.ceo/api/breeds/image/random")
+      .then((res) => res.json())
+      .then((data) => setDogUrl(data.message))
+      .catch((err) => console.error("画像取得エラー:", err));
   };
 
   return (
