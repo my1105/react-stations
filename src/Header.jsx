@@ -1,7 +1,7 @@
-// @ts-check
-
-export const Header = () => {
-  return <></>
+export function Header() {
+  return (
+    <header>
+      <h1>犬の画像を表示するサイトです</h1>
+    </header>
+  );
 }
-
-export default Header

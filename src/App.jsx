@@ -1,33 +1,20 @@
-import './App.css';
-
 import { useEffect, useState } from "react";
+import { Header } from "./Header";
+import { Description } from "./Description";
 
 export function App() {
-  const [dogUrl, setDogUrl] = useState("http://localhost:3000/"); 
+  const [dogUrl, setDogUrl] = useState("");
 
   useEffect(() => {
     fetch("https://dog.ceo/api/breeds/image/random")
       .then((res) => res.json())
-      .then((data) => setDogUrl(data.message))
-      .catch((err) => console.error("画像取得エラー:", err));
+      .then((data) => setDogUrl(data.message));
   }, []);
 
-  const handleUpdateClick = () => {
-    console.log("ボタンがクリックされました！");
-    fetch("https://dog.ceo/api/breeds/image/random")
-      .then((res) => res.json())
-      .then((data) => setDogUrl(data.message))
-      .catch((err) => console.error("画像取得エラー:", err));
-  };
-
   return (
-    <div>
-      <header className="header">
-        <h1>犬の画像を表示するサイトです</h1>
-      </header>
-      <img src={dogUrl} alt="ランダムな犬" />
-      <br />
-      <button onClick={handleUpdateClick}>更新</button>
-    </div>
+    <>
+      <Header />
+      <Description dogUrl={dogUrl} setDogUrl={setDogUrl} />
+    </>
   );
 }
